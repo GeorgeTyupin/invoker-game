@@ -1,0 +1,113 @@
+body {
+   background-color: #2B2A33;
+   z-index: 1;
+   overflow-y: hidden;
+}
+
+.game-area {
+   background: url(img/bgi.jpg);
+   width: 700px;
+   height: 700px;
+   margin: auto;
+   margin-top: 60px;
+}
+
+.cast-area {
+   display: flex;
+   position: absolute;
+   margin-top: 580px;
+   left: 50%;
+   transform: translate(-50%);
+}
+
+
+.cast-box {
+   margin-left: 2px;
+   margin-right: 2px;
+   width: 90px;
+   height: 90px;
+   border: black solid 2px;
+   background-size: 90px 90px !important;
+}
+
+#spell-1, #spell-2 {
+   border: red solid 2px;
+}
+
+#invoke {
+   border: blue solid 2px;
+   background: url(img/invoke.png);
+}
+
+.text-area {
+   position: absolute;
+   display: flex;
+   left: 50%;
+   transform: translate(-50%);
+}
+
+.text-area h1 , .text-area h2{
+   color: white;
+}
+
+.text-area h1 {
+   margin-right: 10px;
+}
+
+.text-area h2 {
+   line-height: 2;
+}
+
+.timer {
+   margin-right: 50px;
+}
+
+.spell {
+   position: absolute;
+   width: 150px;
+   height: 150px;
+   border: white solid 3px;
+   background-size: 150px 150px !important;
+   left: 50%;
+   top: 40%;
+   transform: translate(-50%, -50%);
+}
+
+.background {
+   top: 0;
+   left: 0;
+   background-color: rgba(0, 0, 0, 0.70);
+	position: absolute !important;
+	z-index: 2;
+	height: 2000px;
+	min-width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: space-around;
+}
+
+.background button {
+   width: 200px;
+   height: 60px;
+   font-size: 30px;
+   margin-top: 450px;
+}
+
+.hide {
+   display: none;
+}
+
+.last-score-block {
+   position: absolute;
+   display: flex;
+   margin-top: 150px;
+}
+
+.last-score-block h1, .last-score {
+   color: white;
+}
+
+.last-score{
+   margin-left: 10px;
+   line-height: 2;
+}
