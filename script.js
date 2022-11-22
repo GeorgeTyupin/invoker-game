@@ -63,45 +63,14 @@ class game {
       this.last_spell = '';
    }
 
-   game_on_score() {
-      var timer1 = setInterval(() => {
-         document.querySelector('.timer').innerHTML = String(Number(document.querySelector(".timer").innerHTML)+1);
-      }, 1000);
-      
-      setTimeout(() => {
-         document.querySelector(".last-score").innerHTML = document.querySelector(".score").innerHTML;
-         document.querySelector(".score").innerHTML = 0;
-         document.querySelector('.timer').innerHTML = 0;
-         document.querySelector('.background').classList.remove('hide');
-         clearInterval(timer1);
-         timer1 = 0;
-         this.last_spell = '';
-      }, 11000);
-      this.create_random_spell();
-   }
-
    create_random_spell() {
       let random_spell = this.spells_name_list[Math.floor(Math.random() * 10)]
       if (random_spell == this.last_spell) {
          this.create_random_spell();
       } else {
          this.last_spell = random_spell;
-         document.querySelector('.spell').style.background = `url(img/${random_spell})`;
-         document.querySelector('.spell').setAttribute('spell', random_spell);
-      }
-   }
-
-   cast_spell_1(game) {
-      if (document.querySelector('#spell-1').getAttribute('spell') == document.querySelector('.spell').getAttribute('spell')) {
-         document.querySelector('.score').innerHTML = String(Number(document.querySelector(".score").innerHTML)+1);
-         game.create_random_spell()
-      }
-   }
-
-   cast_spell_2(game) {
-      if (document.querySelector('#spell-2').getAttribute('spell') == document.querySelector('.spell').getAttribute('spell')) {
-         document.querySelector('.score').innerHTML = String(Number(document.querySelector(".score").innerHTML)+1);
-         game.create_random_spell()
+         document.querySelector('#spell').style.background = `url(img/${random_spell})`;
+         document.querySelector('#spell').setAttribute('spell', random_spell);
       }
    }
    
@@ -160,9 +129,60 @@ class game {
    }
 }
 
-document.querySelector('#start').addEventListener('click', () => {
+
+
+class game_on_score extends game {
+   constructor() {
+      if (key == 68) {
+         game.cast_spell_1(game);
+      } else if (key == 70) {
+         game.cast_spell_2(game);
+      }
+   }
+
+   game_on_score() {
+      var timer1 = setInterval(() => {
+         document.querySelector('.timer').innerHTML = String(Number(document.querySelector(".timer").innerHTML)+1);
+      }, 1000);
+      
+      setTimeout(() => {
+         document.querySelector(".last-score").innerHTML = document.querySelector(".score").innerHTML;
+         document.querySelector(".score").innerHTML = 0;
+         document.querySelector('.timer').innerHTML = 0;
+         document.querySelector('.background').classList.remove('hide');
+         clearInterval(timer1);
+         timer1 = 0;
+         this.last_spell = '';
+         document.querySelector('#spell-1').setAttribute('spell', '');
+         document.querySelector('#spell-2').setAttribute('spell', '');
+         document.querySelector('#spell-1').style.background = '';
+         document.querySelector('#spell-2').style.background = '';
+         console.log(1)
+      }, 11000);
+      this.create_random_spell();
+   }
+
+   cast_spell_1(game) {
+      // if (document.querySelector('#spell-1').getAttribute('spell') == document.querySelector('#spell').getAttribute('spell')) {
+      //    document.querySelector('.score').innerHTML = String(Number(document.querySelector(".score").innerHTML)+1);
+      //    game.create_random_spell()
+      // }
+      console.log('d')
+   }
+
+   cast_spell_2(game) {
+      // if (document.querySelector('#spell-2').getAttribute('spell') == document.querySelector('#spell').getAttribute('spell')) {
+      //    document.querySelector('.score').innerHTML = String(Number(document.querySelector(".score").innerHTML)+1);
+      //    game.create_random_spell()
+      // }
+      console.log('f')
+   }
+}
+
+document.querySelector('#start-game-on-score').addEventListener('click', () => {
    document.querySelector('.background').classList.add('hide');
-   game.game_on_score()
+   game_on_score.game_on_score()
 });
 
 game = new game();
+game_on_score = new game_on_score()

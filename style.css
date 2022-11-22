@@ -86,28 +86,29 @@ body {
 	justify-content: space-around;
 }
 
-.background button {
+.score-block button, .combo-block button {
    width: 200px;
    height: 60px;
    font-size: 30px;
-   margin-top: 450px;
+   margin-top: 200px;
+   left: 50%;
+   transform: translate(-150%)
 }
 
 .hide {
    display: none;
 }
 
-.last-score-block {
-   position: absolute;
+.score-block, .combo-block {
    display: flex;
-   margin-top: 150px;
+   margin-top: 250px;
 }
 
-.last-score-block h1, .last-score {
+.score-block h1, .last-score, .combo-block h1, .last-combo-time {
    color: white;
 }
 
-.last-score{
+.last-score, .last-combo-time{
    margin-left: 10px;
    line-height: 2;
 }
